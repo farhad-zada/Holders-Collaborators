@@ -1,13 +1,16 @@
 const { ethers, upgrades } = require("hardhat");
 async function main() {
-  const LandV2 = await ethers.getContractFactory("LandV2");
+  const MetafluenceV2 = await ethers.getContractFactory("MetafluenceV2");
 
-  const landV2 = await upgrades.upgradeProxy(
+  const metafluenceV2 = await upgrades.upgradeProxy(
     "0xb20b17a146D0CeAAAeC707a3703d790139f747bf",
-    LandV2
+    MetafluenceV2
   );
-  await landV2.deployed();
-  console.log(`Contract {${landV2.address}} upgraded! ✨`, landV2.address);
+  await metafluenceV2.deployed();
+  console.log(
+    `Contract {${metafluenceV2.address}} upgraded! ✨`,
+    metafluenceV2.address
+  );
 }
 
 main()
