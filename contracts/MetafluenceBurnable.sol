@@ -31,4 +31,13 @@ contract MetafluenceBurnable is
     function burn(uint256 amount) public {
         _burn(msg.sender, amount);
     }
+
+    function withdraw(
+        address token,
+        address payable to,
+        uint256 amount
+    ) public payable onlyOwner returns (bool) {
+        IERC20Upgradeable(token).transfer(to, amount);
+        return true;
+    }
 }
