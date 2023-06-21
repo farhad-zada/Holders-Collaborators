@@ -1,15 +1,15 @@
 const { ethers, upgrades } = require("hardhat");
 async function main() {
-  const MetafluenceV2 = await ethers.getContractFactory("MetafluenceV2");
+  const CollaboratorsV2 = await ethers.getContractFactory("CollaboratorsV2");
 
-  const metafluenceV2 = await upgrades.upgradeProxy(
+  const collaboratorsV2 = await upgrades.upgradeProxy(
     "0xb20b17a146D0CeAAAeC707a3703d790139f747bf",
-    MetafluenceV2
+    CollaboratorsV2
   );
-  await metafluenceV2.deployed();
+  await collaboratorsV2.deployed();
   console.log(
-    `Contract {${metafluenceV2.address}} upgraded! ✨`,
-    metafluenceV2.address
+    `Contract {${collaboratorsV2.address}} upgraded! ✨`,
+    collaboratorsV2.address
   );
 }
 
