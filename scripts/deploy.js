@@ -1,11 +1,11 @@
 const { ethers, upgrades } = require("hardhat");
 async function main() {
-  const Metafluence = await ethers.getContractFactory("Metafluence");
+  const Collaborators = await ethers.getContractFactory("Collaborators");
 
-  const metafluence = await upgrades.deployProxy(Metafluence);
+  const collaborators = await upgrades.deployProxy(Collaborators);
   // Start deployment, returning a promise that resolves to a contract object
-  await metafluence.deployed();
-  console.log("Contract deployed to address:", metafluence.address);
+  await collaborators.deployed();
+  console.log("Contract deployed to address:", collaborators.address);
 }
 
 main()
