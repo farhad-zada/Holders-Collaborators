@@ -225,7 +225,7 @@ contract Collaborators is Initializable, OwnableUpgradeable, UUPSUpgradeable {
 
   function upgradeLevel(address token, uint8 level) public upgradeAvailable(level) {
     (, TokenData memory tokenData) = _tokenExists(token);
-    uint256 amount = boostings[token][level][msg.sender];
+    uint256 amount = boostings[token][level][msg.sender] + boostings[token][level][msg.sender] * levelDetails[level] / 100;
     if (amount == 0) revert Collaborate__NoBoosting();
     _beforeBoostAndUpgrade(tokenData, amount);
     delete boostings[token][level][msg.sender];
@@ -472,4 +472,5 @@ contract Collaborators is Initializable, OwnableUpgradeable, UUPSUpgradeable {
   function timestamp(uint256 plus) public view returns (uint256) {
     return block.timestamp + plus;
   }
+
 }
